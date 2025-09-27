@@ -1,0 +1,24 @@
+:root {
+    --hair-light: #87223f;
+    --hair-dark: #5a1315;
+    --eye-dark: #f2ab3c;
+    --eye-light: #ffd655;
+    --line-color: var(--background-color);
+    --stroke-color: #fff;
+    --background-color: #000;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+}
+
+#obj1 {
+    height: 100vh;
+    width: 100vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
