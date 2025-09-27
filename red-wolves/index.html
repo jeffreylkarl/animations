@@ -3,134 +3,38 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>SVG Animations Showcase</title>
+        <title>Red Wolves SVG Animation</title>
         <style>
             :root {
-                --text-color: green;
-                --hair-light: #87223f;
-                --hair-dark: #5a1315;
-                --eye-dark: #f2ab3c;
-                --eye-light: #ffd655;
-                --line-color: #000;
-                --stroke-color: #fff;
-                --background-color: black;
-            }
-            body {
-                margin: 0;
-                padding: 0;
-                background: var(--background-color);
-                color: var(--text-color);
-                font-family: Arial, sans-serif;
-            }
-            h1 {
-                text-align: center;
-                padding: 20px;
-            }
-            .animation-container {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 20px;
-            }
-            object {
-                width: 50vw;
-                height: 50vh;
-                max-width: 600px;
-                display: block;
-            }
+                  --hair-light: #87223f;
+                  --hair-dark: #5a1315;
+                  --eye-dark: #f2ab3c;
+                  --eye-light: #ffd655;
+                  --line-color: #000;
+                  --stroke-color: #fff;
+                  --background-color: black;
+                }
+
+        body, html {
+          margin: 0;
+          padding: 0;
+          background-color: var(--background-color);
+        }
+        
+        #obj1 {
+          height: 100vh;
+          width: 100vw;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
         </style>
     </head>
     <body>
-        <div class="animation-container">
-            <object
-                id="red-wolves"
-                type="image/svg+xml"
-                data="animations/red_wolves_2.svg"
-            ></object>
-            <!-- Add more <object> tags for other SVGs, e.g.:
-    <object id="wolf-dance" type="image/svg+xml" data="animations/wolf_dance.svg"></object>
-    -->
-        </div>
-        <script>
-            function applySvgStyles(objectId, svgUrl) {
-                const obj = document.getElementById(objectId);
-                obj.addEventListener("load", () => {
-                    setTimeout(() => {
-                        const svgDoc = obj.getSVGDocument();
-                        if (!svgDoc) {
-                            console.error(
-                                `Failed to access SVG document for ${svgUrl}. Check CORS or file.`
-                            );
-                            return;
-                        }
-                        const svgRoot = svgDoc.documentElement;
-                        svgRoot.style.setProperty("--hair-light", "#87223f");
-                        svgRoot.style.setProperty("--hair-dark", "#5a1315");
-                        svgRoot.style.setProperty("--eye-dark", "#f2ab3c");
-                        svgRoot.style.setProperty("--eye-light", "#ffd655");
-                        svgRoot.style.setProperty("--line-color", "#000");
-                        svgRoot.style.setProperty("--stroke-color", "#fff");
-                        svgRoot.style.setProperty("--text-color", "green");
-                        svgRoot.style.setProperty(
-                            "--background-color",
-                            "black"
-                        );
-
-                        const style = svgDoc.createElementNS(
-                            "http://www.w3.org/2000/svg",
-                            "style"
-                        );
-                        style.textContent = `
-            :root {
-              --hair-light: #87223f;
-              --hair-dark: #5a1315;
-              --eye-dark: #f2ab3c;
-              --eye-light: #ffd655;
-              --line-color: #000;
-              --stroke-color: #fff;
-              --text-color: green;
-              --background-color: black;
-            }
-            path[fill="var(--hair-light)"] { fill: var(--hair-light, #87223f); }
-            path[fill="var(--hair-dark)"] { fill: var(--hair-dark, #5a1315); }
-            path[fill="var(--eye-dark)"] { fill: var(--eye-dark, #f2ab3c); }
-            path[fill="var(--eye-light)"] { fill: var(--eye-light, #ffd655); }
-            path[fill="var(--line-color)"] { fill: var(--line-color, #000); }
-          `;
-                        svgRoot.appendChild(style);
-
-                        console.log(`CSS variables set for ${objectId}:`, {
-                            hairLight:
-                                svgRoot.style.getPropertyValue("--hair-light"),
-                            hairDark:
-                                svgRoot.style.getPropertyValue("--hair-dark"),
-                            eyeDark:
-                                svgRoot.style.getPropertyValue("--eye-dark"),
-                            eyeLight:
-                                svgRoot.style.getPropertyValue("--eye-light"),
-                            lineColor:
-                                svgRoot.style.getPropertyValue("--line-color"),
-                        });
-
-                        const paths =
-                            svgDoc.querySelectorAll('path[fill*="var("]');
-                        console.log(
-                            `Found ${paths.length} paths with CSS variable fills in ${objectId}`
-                        );
-                        paths.forEach((path, i) => {
-                            console.log(
-                                `Path ${i} in ${objectId}: fill = ${path.getAttribute(
-                                    "fill"
-                                )}, computed = ${getComputedStyle(path).fill}`
-                            );
-                        });
-                    }, 100);
-                });
-            }
-
-            // Apply styles to each SVG
-            applySvgStyles("red-wolves", "animations/red_wolves_2.svg");
-            // Add more, e.g.: applySvgStyles('wolf-dance', 'animations/wolf_dance.svg');
-        </script>
+        <object 
+            id="obj1" 
+            type="image/svg+xml" 
+            data="red-wolves/red_wolves_2.svg">
+        </object>
     </body>
 </html>
